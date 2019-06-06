@@ -12,36 +12,23 @@ var duration = d3.select('durationMinutes');
 var comment = d3.select('comments');
 
 
-data.forEach((weatherReport) => {
+data.forEach((sightings) => {
   var row = tbody.append("tr");
-  Object.entries(weatherReport).forEach(([key, value]) => {
+  Object.entries(sightings).forEach(([key, value]) => {
     var cell = row.append("td");
     cell.text(value);
   });
+  console.log(data);
 });
 
 
-
-// sightings.forEach((sighting) => {
-//     var row = tbody.append("tr");
-//     Object.entries(sighting).forEach(([key, value]) => {
-//         console.log(`Key: ${key} and Value ${value}`);
-//         var cell = row.append("td");
-//         cell.text(value);
-//     });
-// });
-// var row = d3.select("tbody").append("tr").text(value);
-
-
-
-
 //select the submit button
-var submit = d3.select('#filter-btn');
+var submit = d3.select('.submit');
 submit.on('click', function () {
   //prevent the page from refreshing
   d3.event.preventDefault();
 
-  d3.select('#filtered-results').html();
+  d3.select('.form-control');
   //select the input element and get the html node
   var inputElement = d3.select('#datetime');
   //select the value property of the input element
@@ -49,9 +36,25 @@ submit.on('click', function () {
 
   console.log(inputValue);
   
-  var filteredData = sightings.filter(sightings => sightings.datetime === inputValue);
 
+  var filteredData = data.filter(sightings => {
+    return sightings.datetime == inputValue
+  });
   console.log(filteredData);
+
+  var filteredSightings = filteredData.map(sightings => {
+    return sightings;
+  });
+  console.log(filteredSightings);
+  date.select('tr>td').text(inputValue);
+  city.select('tr>td').text(inputValue);
+  state.select('tr>td').text(inputValue);
+  country.select('tr>td').text(inputValue);
+  shape.select('tr>td').text(inputValue);
+  duration.select('tr>td').text(inputValue);
+  comments.select('tr>td').text(inputValue);
+
+  // tbody.html('');
 
   filteredData.forEach((sightings) => {
     var row = tbody.append("tr");
@@ -60,6 +63,5 @@ submit.on('click', function () {
       var cell = row.append("td");
       cell.text(value);
     });
-    // tbody.html('');
   });
 });
