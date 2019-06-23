@@ -7,5 +7,5 @@
 * Users can search UFO data archive by date/time to view reported UFO sightings.
 
 ## Dataset
-![UFO Sightings Data](C:\Users\setho\Desktop\Git\Aliens-R-Real\js\data.js)
+![UFO Sightings Data](js\data.js)
 
