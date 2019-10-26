@@ -15,8 +15,8 @@ function populateTable(data) {
       var cell = row.append("td");
       cell.text(val);
     });
-  });
-}
+  })
+};
 
 
 function handleClick() {
@@ -32,33 +32,7 @@ function handleClick() {
   // @NOTE: If no date was entered, then filteredData will
   // just be the original tableData.
   buildTable(filteredData);
-}
-
-
-// Keep Track of all filters
-var filters = {};
-
-function updateFilters() {
-
-  // Save the element, value, and id of the filter that was changed
-  var changedElement = d3.select(this).select("input");
-  var elementValue = changedElement.property("value");
-  var filterId = changedElement.attr("id");
-
-  // If a filter value was entered then add that filterId and value
-  // to the filters list. Otherwise, clear that filter from the filters object
-  if (elementValue) {
-    filters[filterId] = elementValue;
-  }
-  else {
-    delete filters[filterId];
-  }
-
-  // Call function to apply all filters and rebuild the table
-  filterTable();
-
-}
-
+};
 
 
 // Attach an event to listen for the form button
