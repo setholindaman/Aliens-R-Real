@@ -7,5 +7,3 @@
 
 ## Dataset
 * [UFO Sightings Data](js/data.js)
-
-![Bacteria by filterforge.com](images/nasa.jpg)
